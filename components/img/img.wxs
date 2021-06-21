@@ -1,0 +1,8 @@
+function hadHttp (url) {
+  url = url.split(':')
+  return url.length
+}
+
+module.exports = {
+  hadHttp: hadHttp
+}

@@ -1,0 +1,113 @@
+<wxs src="../../assets/wxs/utils.wxs" module="utils" />
+<view>
+	<view class="banner">
+		<img mode="widthFix" src="/images/banner1.png"></img>
+	</view>
+	<view class="cont">
+		<navigator class="item address" hover-class="none" url="/common/pages/cityLocation/cityLocation?pageFullType=true&key=selectedCity">
+			<view class="city">{{selectedCity.sitename}}</view>
+			<view class="location-box">
+				<img class="location" src="/images/icons/location.png"></img>
+				<text class="txt">当前位置</text>
+			</view>
+		</navigator>
+		<view class="item date-time" bindtap="selectDate">
+			<view class="start">
+				<text class="time">{{rangeIn.date}}</text>
+				<text class="day">{{rangeIn.week}}</text>
+			</view>
+			<view class="line">
+
+			</view>
+			<view class="end">
+				<text class="time">{{rangeOut.date}}</text>
+				<text class="day">{{rangeOut.week}}</text>
+			</view>
+			<view class="day-num">
+				<text class="color6">共{{utils.getNights(rangeIn.timeStamp,rangeOut.timeStamp)}}晚</text>
+			</view>
+		</view>
+		<view class="item">
+			<view class="left">
+				<text class="red">*</text>
+				<text>咨询单类型</text>
+			</view>
+			<view class="right">
+				<picker bindchange="bindPickerChange" data-key="consultIndex" range-key="name" value="{{consultIndex}}" range="{{consultList}}">
+					<view class="picker {{consultIndex == null ? 'color9' : ''}}">
+						{{consultIndex == null ? '差旅订单/个人订单' : consultList[consultIndex].name}}
+					</view>
+				</picker>
+			</view>
+		</view>
+		
+		<view class="item">
+			<view class="left">
+				<text>酒店名称</text>
+			</view>
+			<view class="right">
+				<input value="{{hotelName}}" bindinput="inputChange" data-key="hotelName" placeholder-class="color9" placeholder="请输入意向酒店名称" />
+			</view>
+		</view>
+		<view class="item">
+			<view class="left">
+				<text>房型</text>
+			</view>
+			<view class="right">
+				<input value="{{bedType}}" bindinput="inputChange" data-key="bedType" placeholder-class="color9" placeholder="请输入房型名称" /> 
+			</view>
+		</view>
+		<view class="item">
+			<view class="left">
+				<text>是否含早</text>
+			</view>
+			<view class="right">
+				<switch color="#0091FF" checked="{{hasBreakfast}}" bindchange="switchChange" />
+			</view>
+		</view>
+		<view class="item">
+			<view class="left alignTop">
+				<text>特殊要求</text>
+			</view>
+			<view class="right">
+				<textarea value="{{specialTxt}}" maxlength="100" placeholder-class="color9" placeholder="请输入特殊要求" data-key="specialTxt" bindinput="inputChange"></textarea>
+				<text class="num">{{specialTxt.length}}/100</text>
+			</view>
+		</view>
+		<view class="item">
+			<view class="left">
+				<text class="red">*</text>
+				<text>预定房间数</text>
+			</view>
+			<view class="right">
+				<picker bindchange="bindPickerChange" data-key="roomIndex" range="{{roomNumList}}">
+					<view class="picker {{roomIndex == null ? 'color9' : ''}}">
+						{{roomIndex == null ? '请选择预定房间数' : roomNumList[roomIndex]}}
+					</view>
+				</picker>
+			</view>
+		</view>
+	</view>
+	<view class="cont mt20 add-box">
+		<view class="title">预定房间数</view>
+		<view class="room-item" wx:for="{{roomList}}" wx:key="unique">
+			<view class="room">
+				<text>房间{{(index+1)}}</text>
+				<img bindtap="addPersonHandle" wx:if="{{item.tourist.length == 1}}" data-index="{{index}}" src="add-icon" src="/images/icons/add.png"></img>
+			</view>
+			<view class="person-list"> 
+				<view class="per-item"  wx:for="{{item.tourist}}" wx:key="unique" wx:for-index="tIndex" wx:for-item="tItem">
+					<text>入住人{{tIndex+1}}</text>
+					<view class="text">
+						<navigator url="/member/pages/tourist/touristListNew/index?multiple=false&key=roomList[{{index}}].tourist[{{tIndex}}]&id={{tItem.id}}&type=hotel" hover-class="none" >{{tItem.name ? tItem.name : '请选择'}}</navigator>
+					</view>
+					<view class="del" bindtap="delContact" data-index="{{index}}" data-tindex="{{tIndex}}" wx:if="{{tIndex > 0}}">
+						<img style="display: initial;" src="/images/icons/del_t.png"></img>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="submit" bindtap="submitHandle">提交</view>
+</view>

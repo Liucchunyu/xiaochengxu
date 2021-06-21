@@ -1,0 +1,25 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "酒店",
+          "pathName": "pages/hotel/index",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

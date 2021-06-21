@@ -1,0 +1,7 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+	<img src="/images/login.png" mode="widthFix" style="width:100%;display:block;"></img>
+	<block>
+		<button class="button login-btn" open-type="getPhoneNumber" bindgetphonenumber="getPhone" hidden="{{mobileBtnStatus}}">用手机号登录</button>
+	</block>
+</view>

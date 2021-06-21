@@ -1,0 +1,83 @@
+<!-- 城市定位 -->
+<wxs module="functionM1">
+var toUpdateWrite = function(value){
+  var val = value.toString();
+  return val.toUpperCase();
+}
+module.exports.toUpdateWrite = toUpdateWrite;
+</wxs>
+
+
+<scroll-view id="city-location" class="city-location {{propOpen?'active':''}}" scroll-y="{{!noscroll}}" scroll-into-view="{{scrollIntoViewId}}" bindscroll="letterScroll" style="height:{{windowHeight - padBottom}}px !important;">
+<!--  -->
+  <!-- 搜索框 -->
+  <view class="search-filter" hidden="{{!pageFullType}}">
+    <!-- 过滤输入框 -->
+    <view class="filter-input-wrap">
+      <form>
+        <image src="/images/icons/search.png" />
+        <input placeholder="搜索城市" bindinput="inputSearch" value="{{searchInputValue}}"/>
+        <image hidden="{{!resultActive}}" src="/images/icons/close.png" class="clear-btn" bind:tap="resetFrom" />
+      </form>
+    </view>
+  </view>
+  <view class="default-wrap">
+    <!-- 国内/海外 -->
+    <view class="tab-wrap" hidden="{{!pageFullType}}">
+      <view class="tab-item {{destinationType =='inland'?'active':''}}" bind:tap="reloadCityList" data-destination="{{'inland'}}">国内
+      </view>
+      <view class="tab-item {{destinationType =='aboard'?'active':''}}" bind:tap="reloadCityList" data-destination="{{'aboard'}}">海外
+      </view>
+    </view>
+    <!-- 我的位置板块 -->
+    <view class="condition-wrap letter " id="{{'title_#'}}">
+      <view class="condition-title">
+        <text class="title-text">我的位置</text>
+      </view>
+      <view class="contain pdb48">
+        <view class="condition-btn-group">
+          <view class="condition-btn active" data-item="{{loactionCity}}" data-sitecode="{{mySiteCode}}"  bind:tap="setLocation">{{loactionCity}}</view>
+        </view>
+      </view>
+      <view class="condition-title">
+        <text class="title-text">{{hotCityLabel}}</text>
+      </view>
+      <view class="contain">
+        <view class="condition-btn-group limit4row" hidden="{{pageFullType}}">
+          <view wx:for="{{hotCitysList}}" wx:key="unique" class="condition-btn {{item.active?'active':''}}" bind:tap="setLocation" data-item="{{item.label}}" data-sitecode="{{item.siteCode}}">{{item.label}}</view>
+        </view>
+        <view class="condition-btn-group limit4row" hidden="{{!pageFullType}}">
+          <view wx:for="{{hotCitysList}}" wx:key="unique" class="condition-btn" bind:tap="setLocation" data-sitecode="{{item.destId}}" data-item="{{item.name}}">{{item.name}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 城市列表; -->
+    <view class="city-list-wrapper" hidden="{{!pageFullType}}">
+      <block wx:for="{{citysList}}" wx:key="unique" wx:for-item="city">
+       <!-- 字母索引条 -->
+        <block>
+          <view class="city-list-letter letter" id="{{'title_' + functionM1.toUpdateWrite(city.firstLetter)}}">{{functionM1.toUpdateWrite(city.firstLetter)}}</view>
+        </block>
+        <view wx:for="{{city.cityIdNameVo}}" wx:key="unique" class="city-list-item" bind:tap="setLocation" data-sitecode="{{item.destId}}"  data-item="{{item.name}}">{{item.name}}</view>
+      </block>
+    </view>
+    
+  </view>
+  <!-- 搜索结果  -->
+  <view class="result-wrap {{resultActive?'active':''}}">
+    <view wx:for="{{resultLsit}}" wx:key="unique" class="result-item" data-item="{{item.label}}" data-sitecode="{{item.destId}}"  bind:tap="setLocation" >{{item.label}}</view>
+  </view>
+</scroll-view>
+
+<view class="multiple-box" wx:if="{{multipleList.length > 0}}">
+  <view class="item" wx:for="{{multipleList}}" wx:key="unique">
+    <text>{{item.sitename}}</text>
+    <img data-index="{{index}}" bindtap="reduceSelect" src="/images/icons/close2.png" data-sitecode="{{item.sitecode}}"></img>
+  </view>
+  <view class="sureBtn" bindtap="multipleSure">确定</view>
+</view>
+
+<!-- 左侧字母栏目 -->
+<view class="letter-side-bar" hidden="{{!pageFullType}}">
+  <view class="letter-item {{(barIndex === index) ? 'active' : ''}}" wx:for="{{letterSlideBar}}" wx:key="unique" bind:tap="tapIndexItem" data-item="{{item}}">{{item}}</view>
+</view>

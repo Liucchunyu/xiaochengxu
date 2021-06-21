@@ -1,0 +1,198 @@
+/* pages/hotel/index/index.wxss */
+page {
+    padding-bottom: 80rpx;
+}
+
+.banner {
+    height: 240rpx;
+    background-color: aqua;
+}
+.banner image{
+    width: 100%;
+    height: 100%;
+}
+
+.cont {
+    width: 686rpx;
+    background: #fff;
+    margin-top: -100rpx;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20rpx;
+    box-sizing: border-box;
+    padding: 0 32rpx;
+    padding-bottom: 20rpx;
+    position: relative;
+    z-index: 2;
+}
+.location{
+    width: 38rpx;
+    height: 38rpx;
+}
+.item {
+    display: flex;
+    align-items: center;
+    min-height: 100rpx;
+    border-bottom: 1rpx solid #E3E3E7;
+}
+
+.item .left {
+    width: 210rpx;
+    padding-left: 20rpx;
+    position: relative;
+}
+
+.item .left .red {
+    position: absolute;
+    left: 0;
+}
+
+.item .right {
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.item .right textarea {
+    padding: 20rpx 0;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.item .alignTop {
+    align-self: flex-start;
+    padding-top: 30rpx;
+}
+
+.item .right .num {
+    position: absolute;
+    font-size: 24rpx;
+    color: #cccccc;
+    bottom: 10rpx;
+    right: 0;
+}
+
+.item:last-child {
+    border-bottom: 0;
+}
+
+.address {
+    justify-content: space-between;
+}
+
+.city {
+    font-size: 38rpx;
+}
+.location-box{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100rpx;
+    flex: 0 0 auto;
+}
+.address .txt {
+    font-size: 20rpx;
+    display: block;
+    color: #0091FF;
+    padding-top: 4rpx;
+}
+
+.date-time .start {
+    width: 270rpx;
+}
+
+.line {
+    width: 30rpx;
+    height: 1px;
+    position: relative;
+    left: -30rpx;
+    background: rgba(0, 0, 0, 0.50);
+}
+
+.date-time .end {
+    width: 230rpx;
+}
+
+.date-time .day-num {
+    flex: 1;
+    text-align: right;
+    color: #666666;
+}
+.date-time .day-num text{
+    font-size: 24rpx;
+}
+
+.date-time .time {
+    font-size: 38rpx;
+}
+
+.date-time .day {
+    font-size: 22rpx;
+    margin-left: 4rpx;
+}
+
+.add-box {
+    padding-bottom: 0;
+    border-radius: 14rpx ;
+    padding: 0 32rpx;
+}
+.add-box .title{
+    line-height: 40rpx;
+    padding-top: 40rpx;
+}
+.add-box .room-item .room{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40rpx;
+    padding-top: 26rpx;
+}
+.add-box .room-item{
+    border-bottom: 1rpx solid #E3E3E7;
+}
+.add-box .room-item:last-child{
+    border-bottom: 0;
+}
+.add-box .room-item .room img{
+    width: 36rpx;
+    height: 36rpx;
+}
+.per-item{
+    display: flex;
+    height: 108rpx;
+    align-items: center;
+    border-bottom: 1rpx solid #E3E3E7;
+    position: relative;
+}
+
+.per-item .del{
+    width: 32rpx;
+    height: 32rpx;
+    position: absolute;
+    right: 5rpx;
+    top: 35rpx;
+}
+.per-item:last-child{
+    border-bottom: 0;
+}
+.per-item text:nth-child(1){
+    width: 230rpx;
+    flex: 0 0 auto;
+    color: #999;
+}
+.per-item .text{
+    flex: 1;
+    color: #999;
+}
+.submit{
+    width: 686rpx;
+    background: #0091FF;
+    border-radius: 60rpx;
+    border-radius: 60rpx;
+    color: #ffffff;
+    font-size: 32rpx;
+    margin:80rpx auto 0;
+    line-height: 88rpx;
+    text-align: center;
+}

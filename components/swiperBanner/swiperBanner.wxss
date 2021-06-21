@@ -1,0 +1,8 @@
+.banner-group{position:relative}
+.banner-group image{width:100%;height:100%}
+.banner-group .home-banner{height:228rpx;background:#D8D8D8;border-radius:12rpx;overflow:hidden;margin:0 32rpx}
+.banner-group .home-banner image{border-radius:12rpx}
+.banner-group .travel-banner{height:500rpx}
+.banner-group .indicator-custom{position:absolute;left:0;bottom:0;width:100%;height:70rpx;line-height:46rpx;padding:0 32rpx 24rpx;text-align:right;font-size:24rpx;color:#fff;background:rgba(0,0,0,.3)}
+.banner-group .hotel-banner{height:500rpx}
+.banner-group .indicator-fraction{position:absolute;right:34rpx;bottom:35rpx;width:98rpx;height:45rpx;line-height:45rpx;text-align:center;background:rgba(0,0,0,.3);border-radius:6rpx;font-size:24rpx;color:#fff}

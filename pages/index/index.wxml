@@ -1,0 +1,26 @@
+<!--index.wxml-->
+<view class="banner">
+	<swiperBanner wx:if="{{remoteAdvList.length > 0 }}" mode="home" isWebview="true" indicator-dots="true" list="{{remoteAdvList}}"></swiperBanner>
+</view>
+<view class="tab" wx:if="{{pdTypeList && pdTypeList.length>0}}">
+	<view class="item" wx:for="{{pdTypeList}}">
+		<view hover-class="none" data-url="{{item.pageUrl}}" bindtap="showConsultPage">
+			<view class="image">
+			  <img mode="widthFix" src="{{item.iconUrl}}"></img>
+			</view>
+			<view>{{item.pdName}}</view>
+		</view>
+	</view>
+</view>
+<view class="advantage" wx:if="{{advantageList && advantageList.length>0}}">
+  <view class="title f32">我们的优势</view>
+  <view class="list">
+    <view class="item" wx:for="{{advantageList}}">
+      <view class="image">
+        <img mode="widthFix" src="{{item.imgUrl}}"></img>
+      </view>
+      <view class="f26">{{item.title}}</view>
+    </view>
+  </view>
+</view>
+<navBar active="0" />

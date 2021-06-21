@@ -1,0 +1,12 @@
+<block wx:if="{{show}}">
+    <calendar 
+        items="{{4}}" 
+        mode="{{mode}}" 
+        rangeIn="{{rangeIn}}" 
+        rangeOut="{{rangeOut}}"
+        rangeStartTips="{{rangeStartTips}}"
+        rangeEndTips="{{rangeEndTips}}"
+        pickedTip="{{pickedTip}}"
+        bind:cb="handleCb"></calendar>
+
+</block>

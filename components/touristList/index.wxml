@@ -1,0 +1,25 @@
+<view class="list">
+	<view class="item" wx:for="{{touristList}}" wx:key="unique" bindtap="selectHandle" data-index="{{index}}">
+		<view class="check" bindtap="delTourist" data-id="{{item.id}}">
+            <img style="display: initial;" src="/images/icons/del_t.png"></img>
+        </view>
+		<view class="flex-item">
+			<text class="label bold">{{item.name}}：</text>
+			<text>{{item.phone}}</text>
+		</view>
+		<view class="flex-item">
+			<text class="label">部门名称</text>
+			<text>{{item.department}}</text>
+		</view>
+		<view class="flex-item">
+			<text class="label">身份证：</text>
+			<text>{{item.idCardNo}}</text>
+		</view>
+		<view class="person" wx:if="{{userInfo.mobileNo ==item.phone}}">本人</view>
+	</view>
+</view>
+
+<navigator class="add-btn" hover-class="none" url="/member/pages/tourist/touristListNew/index?multiple=true&key=touristList">
+	<img style="width: auto;" src="add-icon" src="/images/icons/add.png"></img>
+	{{txt}}
+</navigator>

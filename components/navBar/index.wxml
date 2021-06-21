@@ -1,0 +1,22 @@
+<view class="nav-bar">
+	<view class="nav-bar-flex">
+		<view bindtap="changeNav" data-url="/pages/index/index" class="{{active === 0 ? 'active':''}}">
+			<view class="icon">
+                <img mode="widthFix" src="{{active == 0 ? '/images/icons/home_on.png':'/images/icons/home.png'}}"></img>
+            </view>
+			<text class="txt">首页</text>
+		</view>
+		<view bindtap="changeNav" data-url="/pages/discount/index" class="{{active === 1 ? 'active':''}}">
+			<view class="icon">
+                <img mode="widthFix" src="{{active == 1 ? '/images/icons/shop_on.png':'/images/icons/shop.png'}}"></img>
+            </view>
+			<text class="txt">特惠</text>
+		</view>
+		<view bindtap="changeNav" data-url="/member/pages/index/index"  class="{{active === 2 ? 'active':''}}">
+			<view class="icon">
+				<img mode="widthFix" src="{{active == 2 ? '/images/icons/user_on.png':'/images/icons/user.png'}}"></img>
+			</view>
+			<text class="txt">我的</text>
+		</view>
+	</view>
+</view>

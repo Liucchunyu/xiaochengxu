@@ -1,0 +1,113 @@
+<!--member/pages/tourist/touristListNew/index.wxml-->
+<scroll-view id="city-location" class="city-location {{propOpen?'active':''}}" scroll-y="{{!noscroll}}" scroll-into-view="{{scrollIntoViewId}}" bindscroll="letterScroll" style="height:{{windowHeight - padBottom}}px !important;">
+	<!-- 搜索框 -->
+	<view class="search-filter">
+		<!-- 过滤输入框 -->
+		<view class="filter-input-wrap">
+			<form>
+				<image src="/images/icons/search.png" />
+				<input placeholder="搜索联系人" bindinput="inputSearch" value="{{searchInputValue}}" />
+				<image hidden="{{!resultActive}}" src="/images/icons/close.png" class="clear-btn" bind:tap="resetFrom" />
+			</form>
+		</view>
+	</view>
+	<view class="default-wrap">
+		<!-- 城市列表; -->
+		<view class="city-list-wrapper">
+			<view class="city-list-wrap">
+				<view class="city-list-item {{myData.canSelect ? '' : 'gray'}}"  bind:tap="setLocation" data-id="{{myData.id}}">
+					<view class="check">
+						<img wx:if="{{myData.check}}" src="/images/icons/check_on.png"></img>
+						<img wx:else src="/images/icons/check.png"></img>
+					</view>
+					<view class="flex-item">
+						<text class="label">{{myData.name}}：</text>
+						<text>{{myData.phone}}<text class="label-person">本人</text></text>
+					</view>
+					<view class="flex-item">
+						<text class="label">部门：</text>
+						<text>{{myData.department}}</text>
+					</view>
+					<view class="flex-item">
+						<text class="label">{{myData.certTypeName}}：</text>
+						<text>{{myData.certCode}}</text>
+					</view>
+				</view>
+			</view>
+			<block wx:for="{{cityList}}" wx:key="unique" wx:for-item="city" wx:for-index="cIndex">
+				<!-- 字母索引条 -->
+				<block>
+					<view class="city-list-letter letter" id="{{'title_' + city.letter}}">{{city.letter}}</view>
+				</block>
+				<view class="city-list-wrap">
+					<block wx:for="{{city.data}}" wx:key="unique" >
+                        <view class="city-list-item {{item.canSelect ? '' : 'gray'}}" bind:tap="setLocation" data-id="{{item.id}}" wx:if="{{item.id != myData.id}}">
+                            <view class="check">
+                                <img wx:if="{{item.check}}" src="/images/icons/check_on.png"></img>
+                                <img wx:else src="/images/icons/check.png"></img>
+                            </view>
+                            <view class="flex-item">
+                                <text class="label">{{item.name}}：</text>
+                                <text>{{item.phone}}</text>
+                            </view>
+                            <view class="flex-item">
+                                <text class="label">部门：</text>
+                                <text>{{item.department}}</text>
+                            </view>
+                            <view class="flex-item">
+                                <text class="label">{{item.certTypeName}}：</text>
+                                <text>{{item.certCode}}</text>
+                            </view>
+                        </view>
+                    </block>
+				</view>
+			</block>
+		</view>
+
+	</view>
+
+</scroll-view>
+
+<!-- 搜索结果  -->
+<view class="result-wrap {{resultActive?'active':''}}" style="padding-bottom:{{padBottom}}px">
+	<view class="city-list-wrap">
+		<view class="city-list-item {{item.canSelect ? '' : 'gray'}}" wx:for="{{resultList}}" wx:key="unique" data-id="{{item.id}}" bind:tap="setLocation">
+			<view class="check">
+				<img wx:if="{{item.check}}" src="/images/icons/check_on.png"></img>
+				<img wx:else src="/images/icons/check.png"></img>
+			</view>
+			<view class="flex-item">
+				<text class="label">{{item.name}}：</text>
+				<text>{{item.phone}}</text>
+			</view>
+			<view class="flex-item">
+				<text class="label">部门：</text>
+				<text>{{item.department}}</text>
+			</view>
+			<view class="flex-item">
+				<text class="label">{{item.certTypeName}}：</text>
+				<text>{{item.certCode}}</text>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 多选 -->
+<view class="multiple-box {{fixed ? 'fixed':''}}" wx:if="{{multiple &&  multipleList.length > 0}}">
+    <view class="title">
+		<text>已选：</text>
+		<view class="shrink" wx:if="{{multipleList.length > 3}}" bindtap="fixedHandle"><img src="/images/icons/down.png"></img></view>
+	</view>
+	<view class="multiple-box-list">
+		<view class="item" wx:for="{{multipleList}}" wx:key="unique">
+			<text>{{item.name}}</text>
+			<img data-index="{{index}}" bindtap="reduceSelect" src="/images/icons/close2.png" data-id="{{item.id}}"></img>
+		</view>
+	</view>
+	<view class="sureBtn" bindtap="multipleSure">确定</view>
+</view>
+
+<!-- 左侧字母栏目 -->
+<view class="letter-side-bar">
+	<view class="letter-item {{(barIndex === index) ? 'active' : ''}}" wx:for="{{letterSlideBar}}" wx:key="unique" bind:tap="tapIndexItem" data-index="{{index}}" data-item="{{item}}">{{item}}</view>
+</view>

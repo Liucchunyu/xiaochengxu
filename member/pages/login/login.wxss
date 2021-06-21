@@ -1,0 +1,25 @@
+/* pages/login/login.wxss */
+page{
+    background-color: #fff;
+}
+.button{
+    width: 600rpx !important;
+    height: 88rpx !important;
+    line-height: 88rpx !important;
+    text-align: center;
+    border: 1rpx solid #0091FF;
+    border-radius: 44rpx !important;
+    padding: 0 !important;
+    background-color: #ffffff;
+    font-weight: normal !important;
+    color: #0091FF;
+    font-size: 30rpx;
+}
+.login-btn{
+    margin-top: 180rpx;
+}
+.txt{
+    font-size: 26rpx;
+    color: #333;
+    margin: 80rpx 50rpx 97rpx 50rpx;
+}

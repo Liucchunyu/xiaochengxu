@@ -1,0 +1,85 @@
+.condition-wrap{padding:24rpx 15rpx 0 31rpx}
+.condition-title{background-color:#fff;height:50rpx;line-height:50rpx;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.condition-title .title-text{font-size:36rpx;font-weight:600;color:#333}
+.condition-title .textIcon{font-size:28rpx}
+.condition-btn-group{overflow:hidden;padding-top:16rpx;max-height:184rpx;background-color:#fff}
+.condition-btn-group.limit4row{max-height:unset}
+.condition-btn{display:inline-block;width:160rpx;height:64rpx;margin-bottom:20rpx;line-height:64rpx;margin-right:16rpx;background:#F7F7F7;border-radius:32rpx;text-align:center;padding:0 24rpx;overflow:hidden;-o-text-overflow:ellipsis;text-overflow:ellipsis;white-space:nowrap;vertical-align:top}
+.condition-btn.block{display:block;width:688rpx}
+.condition-btn.active{background: #c2e2fd;color: #0091FF;}
+.contain.pdb48{padding-bottom:48rpx}
+.search-filter{position:relative;z-index:5}
+.search-filter .filter-input-wrap{padding:18rpx 32rpx;background-color:#fff;position:relative}
+.search-filter .filter-input-wrap image{
+    width: 30rpx;
+    height: 30rpx;
+    position: absolute;
+    top: 36rpx;
+    left: 62rpx;
+}
+.search-filter .filter-input-wrap  .clear-btn{
+    left: auto;
+    right: 62rpx;
+}
+.search-filter .filter-input-wrap .icon-search{position:absolute;top:30rpx;font-size:28rpx;left:72rpx}
+.search-filter .filter-input-wrap input{background-color:#F7F7F7;border-radius:32rpx;padding:0 80rpx;height:64rpx}
+.search-filter .filter-input-wrap .icon-shanchu{font-size:28rpx;color:#999;z-index:1}
+.search-filter .filter-input-wrap .reset-button{display:inline-block;position:absolute;top:10rpx;right:54rpx;padding:20rpx;background-color:transparent;line-height:1;border-radius:none}
+.city-location{width:100vw;height:100vh;background-color:#fff;top:0;left:0;z-index:1000;overflow:auto}
+.city-location.active{display:block}
+.city-location.noscroll{overflow:hidden}
+.tab-wrap{display:-webkit-box;display:-ms-flexbox;display:flex;height:80rpx;border-bottom:1rpx solid #eee;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-bottom:20rpx}
+.tab-wrap .tab-item{-webkit-box-flex:1;-ms-flex:1;flex:1;text-align:center;position:relative;line-height:80rpx;font-size:32rpx}
+.tab-wrap .tab-item.active{font-weight:600}
+.tab-wrap .tab-item.active:after{content:'';position:absolute;bottom:8rpx;left:0;right:0;margin:auto;width:32rpx;height:4rpx;background:#0091FF}
+.city-list-wrapper{position:relative}
+.city-list-wrapper .city-list-letter{margin-top:-1rpx;background:#f7f7f7;height:64rpx;line-height:64rpx;padding-left:31rpx;font-size:28rpx;color:#999;position:relative;}
+.city-list-wrapper .city-list-item{height:88rpx;margin-left:31rpx;background-color:#fff;color:#000;font-size:28rpx;line-height:88rpx;border-bottom:1rpx solid #eee}
+.letter-side-bar{position:fixed;top:100rpx;right:8rpx;font-size:28rpx;height:100vh;width:30rpx;z-index:10;text-align:center;z-index:1001;}
+.letter-side-bar .letter-item{color:#0091FF;margin-bottom:8rpx}
+.letter-side-bar .letter-item.active{color:#fff;background-color:#0091FF}
+.result-wrap{z-index:1002;height:calc(100vh - 100rpx);width:100%;position:fixed;background-color:#fff;bottom:0;left:0;display:none;}
+.result-wrap.active{display:block}
+.result-item{height:88rpx;margin-left:31rpx;background-color:#fff;color:#000;font-size:28rpx;line-height:88rpx;border-bottom:1rpx solid #eee}
+
+.multiple-box{
+    position: fixed;
+    bottom: 0;
+    left:0;
+    right:0;
+    padding: 32rpx 32rpx 12rpx;
+    display: flex;
+    background-color: #ffffff;
+    border-top: 2rpx #ccc solid;
+    flex-wrap: wrap;
+    max-height: 300rpx;
+    overflow-y: auto;
+    padding-bottom: 100rpx;
+    z-index: 10;
+}
+.multiple-box .item{
+    background: #F7F7F7;
+    border-radius: 80rpx;
+    padding: 0 16rpx 0 26rpx; 
+    height: 60rpx;
+    line-height: 60rpx;
+    display: flex;
+    align-items: center;
+    margin-right: 20rpx;
+    margin-bottom: 20rpx;
+}
+.multiple-box .item image{
+    width: 32rpx;
+    height: 32rpx;
+}
+.multiple-box .sureBtn{
+    width: 60%;
+    border-radius: 50rpx;
+    line-height: 70rpx;
+    position: fixed;
+    bottom: 10rpx;
+    left: 20%;
+    background: #0091FF;
+    color: #fff;
+    text-align: center;
+}

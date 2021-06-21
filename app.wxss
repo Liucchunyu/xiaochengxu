@@ -1,0 +1,94 @@
+/**app.wxss**/
+page {
+  background: #eff0f4;
+}
+view,
+text {
+  /* color: #333333; */
+  font-size: 28rpx;
+}
+
+.color3 {
+  color: #333;
+}
+
+.color6 {
+  color: #666;
+}
+
+.color9 {
+  color: #999999;
+}
+
+.red {
+  color: #F30A37;
+}
+
+.orange {
+  color: #FF8A13;
+}
+
+.blue {
+  color: #0091FF;
+}
+
+.mt20 {
+  margin-top: 20rpx !important;
+}
+image{
+  display: block;
+  height: auto;
+}
+.image {
+  width: 100%;
+  height: auto;
+}
+
+.f22 {
+  font-size: 22rpx;
+}
+
+.f26 {
+  font-size: 26rpx;
+}
+
+.f30 {
+  font-size: 30rpx;
+}
+
+.f32 {
+  font-size: 32rpx;
+}
+
+.shengl {
+  word-break: keep-all;
+  white-space: nowrap;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis
+}
+
+.footer-box{
+  display: flex;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: #eff0f4;
+  z-index: 2;
+}
+.footer-box .button{
+    background: #0091FF;
+    border-radius: 60rpx;
+    border-radius: 60rpx;
+    width: 686rpx;
+    line-height: 88rpx;
+    color: #ffffff;
+    text-align: center;
+    font-size: 32rpx;
+    margin: 20rpx auto 20rpx;
+    
+}
+.icon{
+	width: auto;
+}

@@ -1,0 +1,99 @@
+<!--components/calendar/calendar.wxml-->
+<wxs src="../../assets/wxs/utils.wxs" module="utils" />
+<view class="gzl-calendar">
+  <!-- <view wx:if="{{nav.length > 0}}"> -->
+  <scroll-view class="gzl-calendar__nav" scroll-x="{{true}}" scroll-left="{{navScroll}}">
+    <view class="nav-warpper">
+      <view wx:for="{{nav}}" wx:key="unique"
+        class="nav-item {{curNav === index?'active':''}}"
+        data-date="{{item.date}}"
+        data-index="{{index}}"
+        catchtap="navClick">
+        <text>{{item.str}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- </view> -->
+
+  <view class="gzl-calendar__week">
+    <text wx:for="{{week}}" wx:key="unique">{{item}}</text>
+  </view>
+
+  <block wx:if="{{nav.length > 0}}">
+    <swiper class="gzl-calendar__group" 
+      duration="300"
+      current="{{curNav}}"
+      bindchange="navChange"
+      style="height: {{swiperH[curNav]}}px;">
+      <swiper-item wx:for="{{monthList}}" wx:for-item="month" wx:key="unique">
+        <view class="gzl-calendar__item">
+          <view class="gzl-calendar__daylist">
+            <view class="gzl-calendar__blank" wx:for="{{ month }}" wx:key="unique">
+              <view class="gzl-calendar__grid {{item.date === curDay?'active':''}} {{item.disable?'disable':''}}"
+                wx:if="{{item.isCurmonth}}"
+                data-date="{{item.date}}"
+                data-disable="{{item.disable}}"
+                bindtap="gridClick">
+                <view class="gzl-calendar__info {{item.tag}}">
+                  <text wx:if="{{item.holiday}}">{{item.holiday}}</text>
+                  <text wx:if="{{item.tag}}">{{tag[item.tag]}}</text>
+                </view>
+                <view class="gzl-calendar__day"><text>{{item.day}}</text></view>
+                <view class="gzl-calendar__info">
+                  <text wx:if="{{item.num === 0}}">满团</text>
+                  <text wx:elif="{{item.price}}">¥{{item.price}}</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+    </swiper>
+  </block>
+  <block wx:else>
+    <view class="gzl-calendar__group">
+      <view class="gzl-calendar__item" wx:for="{{monthList}}" wx:for-item="month" wx:key="unique">
+        <view class="gzl-calendar__date">{{month[10].year}}年{{month[10].month}}月</view>
+        <view class="gzl-calendar__daylist">
+          <view class="gzl-calendar__blank {{utils.getTime(item.date) >= utils.getTime(rangeIn) && utils.getTime(item.date) <= utils.getTime(rangeOut) ? 'range':''}} {{item.date === rangeIn ? 'rangeIn' : ''}} {{item.date === rangeOut ? 'rangeOut' : ''}}" wx:for="{{ month }}" wx:key="unique">
+            <view 
+              class="gzl-calendar__grid {{item.date === curDay || item.date === rangeIn || item.date === rangeOut?'active':''}} {{(item.disable && item.date !== curRangeMax ) || (curRangeMax && utils.getTime(item.date) > utils.getTime(curRangeMax)) ?'disable':''}}" 
+              wx:if="{{item.isCurmonth}}"
+              data-date="{{item.date}}"
+              data-disable="{{item.disable || item.date === curRangeMax}}"
+              bindtap="gridClick">
+              <view class="gzl-calendar__info" wx:if="{{item.date === rangeIn || item.date === rangeOut}}">
+                <text wx:if="{{item.date === rangeIn}}">{{rangeStartTips}}</text>
+                <text wx:if="{{item.date === rangeOut}}">{{rangeEndTips}}</text>
+              </view>
+              <view class="gzl-calendar__info {{item.tag}}" wx:if="{{item.date !== rangeIn && item.date !== rangeOut}}">
+                <text wx:if="{{item.holiday}}">{{item.holiday}}</text>
+                <text wx:if="{{item.tag}}">{{tag[item.tag]}}</text>
+                <text wx:if="{{item.num}}" class="{{item.num <= 5 ? 'red' : ''}}">{{item.num > 5 ? '可订' : item.num + '间'}}</text>
+              </view>
+              <view class="gzl-calendar__day"><text>{{item.day}}</text></view>
+              <view class="gzl-calendar__info">
+                <text wx:if="{{item.num === 0}}">满团</text>
+                <text wx:elif="{{item.price > 0}}">¥{{item.price}}</text>
+                <text wx:elif="{{item.price < 0}}">补¥{{-(item.price)}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </block>
+
+  <view class="calendar-tip" wx:if="{{mode === 'range'}}">
+    <view class="picked-tip">{{pickedTip}}</view>
+    <view class="range-tip gzl-flex_acenter" hidden="{{!showTip}}">
+      <view class="gzl-flex__item">如果您需要预定超过15天的酒店，请致电<text bindtap="onCall">400-863-8888</text>，我们会竭诚为您服务。</view>
+      <view class="close-tip" bindtap="closeTip"><text class="icon-close"></text></view>
+    </view>
+  </view>
+
+  <view class="calendar-tip" wx:if="{{mode === 'normal-range'}}">
+    <view class="picked-tip">{{pickedTip}}</view>
+  </view>
+  
+</view>

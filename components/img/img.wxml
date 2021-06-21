@@ -1,0 +1,3 @@
+<!--components/img/img.wxml-->
+<wxs src="./img.wxs" module="utils" />
+<image lazy-load="{{true}}" src="{{ utils.hadHttp(src) > 1 ? src : host + '/bTrip' + src }}" mode="{{mode}}" bindtap="previewImage"></image>

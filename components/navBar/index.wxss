@@ -1,0 +1,40 @@
+/* components/navBar/index.wxss */
+.nav-bar{
+    position: fixed;
+    height: 98rpx;
+    padding: 5rpx 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ffffff;
+    border-top: 2rpx #f1f1f1 solid;
+    z-index: 10;
+}
+.nav-bar-flex{
+    display: flex;
+    align-items: center;
+    height: 96rpx;
+}
+.nav-bar-flex > view{
+    flex: 1;
+    text-align: center;
+}
+
+.nav-bar-flex .txt{
+    color: #666666;
+    font-size: 20rpx;
+}
+.nav-bar-flex .icon{
+    position: relative;
+    top: 4rpx;
+    width: 40rpx;
+    height: 38rpx;
+    margin: 0 auto;
+}
+.nav-bar-flex .icon img{
+    width: 100%;
+    height: 100%;
+}
+.nav-bar-flex .active text{
+    color: #0091FF !important;
+}

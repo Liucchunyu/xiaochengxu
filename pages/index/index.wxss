@@ -1,0 +1,65 @@
+/**index.wxss**/
+page{
+  padding-bottom: 100rpx;
+  background: #eff0f4;
+}
+.banner{
+  background: #ffffff;
+}
+.banner .image{
+  width: 686rpx;
+  height: 322rpx;
+  margin: 0 auto;
+  display: block;
+}
+.tab{
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 20rpx;
+  background: #ffffff;
+  padding-bottom: 20rpx;
+}
+.tab .item{
+  width: 25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 20rpx 0;
+  text-align: center;
+}
+.tab .item .image{
+  width: 92rpx;
+  height: 92rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.tab .item .image img{
+  width: 100%;
+}
+.advantage{
+  background: #ffffff;
+  margin-top: 20rpx;
+  padding: 32rpx;
+  border-radius: 14rpx;
+}
+.advantage .list{
+  display: flex;
+  padding: 40rpx 0;
+}
+
+.advantage .list .item{
+  flex: 1;
+  text-align: center;
+}
+.advantage .list .item .image{
+  width: 48rpx;
+  height: 48rpx;
+  margin: 0 auto 20rpx;
+}
+.advantage .list .item .image img{
+  width: 100%;
+  height: 100%;
+}
